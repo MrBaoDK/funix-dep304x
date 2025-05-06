@@ -1,0 +1,10 @@
+C:\Users\dangk\my-solution\DEP304x_01-A_VN\ASM3\TSQLProcedures\bin\Debug\TSQLProcedures.dacpac
+C:\Users\dangk\my-solution\DEP304x_01-A_VN\ASM3\TSQLProcedures\bin\Debug\TSQLProcedures.dll
+C:\Users\dangk\my-solution\DEP304x_01-A_VN\ASM3\TSQLProcedures\bin\Debug\TSQLProcedures.pdb
+C:\Users\dangk\my-solution\DEP304x_01-A_VN\ASM3\TSQLProcedures\obj\Debug\TSQLProcedures.sqlproj.AssemblyReference.cache
+C:\Users\dangk\my-solution\DEP304x_01-A_VN\ASM3\TSQLProcedures\obj\Debug\Model.xml
+C:\Users\dangk\my-solution\DEP304x_01-A_VN\ASM3\TSQLProcedures\obj\Debug\refactor.xml
+C:\Users\dangk\my-solution\DEP304x_01-A_VN\ASM3\TSQLProcedures\obj\Debug\postdeploy.sql
+C:\Users\dangk\my-solution\DEP304x_01-A_VN\ASM3\TSQLProcedures\obj\Debug\predeploy.sql
+C:\Users\dangk\my-solution\DEP304x_01-A_VN\ASM3\TSQLProcedures\obj\Debug\TSQLProcedures.dll
+C:\Users\dangk\my-solution\DEP304x_01-A_VN\ASM3\TSQLProcedures\obj\Debug\TSQLProcedures.pdb

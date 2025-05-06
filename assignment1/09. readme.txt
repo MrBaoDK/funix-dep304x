@@ -1,0 +1,25 @@
+User console access:
+
+- Console sign-in URL
+https://891377297634.signin.aws.amazon.com/console
+
+- User name
+DEP304X_ASM1_User
+
+- Password
+Asm1_p@ssw0rd
+
+
+DNS for ALB:
+DEP304X-ASM1-ALB-600193278.ap-southeast-1.elb.amazonaws.com
+
+
+
+# No package stress available. Install with Amazon linux utility
+sudo amazon-linux-extras install epel -y
+sudo yum install stress -y
+# Run stress for 5 mins
+sudo stress --cpu 1 --timeout 300
+
+
+

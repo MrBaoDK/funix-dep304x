@@ -1,0 +1,47 @@
+Ở yêu cầu nâng cao, bạn sẽ cần thực hiện và ghi lại thời gian thực thi các ETL trong các trường hợp sau:
+
+Chạy ETL sử dụng SSIS ở On-premises Data Warehouse.
+Flat file source importing: 422ms
+Dimensional tables etl: 1s 125ms
+Fact table etl: 515ms
+
+-> Total: 2s 94ms
+
+
+Chạy ETL sử dụng T-SQL PROCEDURE ở On-premises Data Warehouse.
+
+ASM3_Source> BULK INSERT [dbo].[netflix_shows]
+             FROM '\Downloads\extra_data.csv'
+             WITH (FIRSTROW = 2,  FIELDTERMINATOR = ',', ROWTERMINATOR = '0x0a')
+[2024-04-17 12:46:16] 6 rows affected in 41 ms
+ASM3_Source> EXEC [dbo].LOAD_DIM_COUNTRY;
+             EXEC [dbo].LOAD_DIM_DATE;
+             EXEC [dbo].LOAD_DIM_DIRECTOR;
+             EXEC [dbo].LOAD_DIM_DURATION;
+             EXEC [dbo].LOAD_DIM_INFO;
+             EXEC [dbo].LOAD_DIM_RATING;
+             EXEC [dbo].LOAD_DIM_TYPE;
+             EXEC [dbo].LOAD_FACT_NETFLIX_SHOWS;
+[2024-04-17 12:46:16] 21 rows affected in 212 ms
+
+-> Total: 255ms
+
+
+Chạy ETL sử dụng T-SQL PROCEDURE ở Cloud Data Warehouse.
+
+COPY dev.asm3_source_dbo.netflix_shows
+FROM 's3://baodk-sct-bucket/load/extra_data.csv'
+IAM_ROLE 'arn:aws:iam::891377297634:role/MyRedshiftRole'
+FORMAT AS CSV DELIMITER ',' QUOTE '"' IGNOREHEADER 1 REGION AS 'us-east-1';
+-- Load into table 'netflix_shows' completed, 6 record(s) loaded successfully. 899 ms
+
+CALL asm3_source_dbo.load_dim_country(1); -- in 8 s 750 ms (execution: 8 s 676 ms, fetching: 74 ms)
+CALL asm3_source_dbo.load_dim_date(1); -- in 11 s 362 ms (execution: 11 s 343 ms, fetching: 19 ms)
+CALL asm3_source_dbo.load_dim_director(1); -- in 8 s 178 ms (execution: 8 s 159 ms, fetching: 19 ms)
+CALL asm3_source_dbo.load_dim_duration(1); -- in 7 s 218 ms (execution: 7 s 200 ms, fetching: 18 ms)
+CALL asm3_source_dbo.load_dim_info(1); -- in 10 s 435 ms (execution: 10 s 416 ms, fetching: 19 ms)
+CALL asm3_source_dbo.load_dim_rating(1); -- in 7 s 761 ms (execution: 7 s 742 ms, fetching: 19 ms)
+CALL asm3_source_dbo.load_dim_type(1); -- in 8 s 56 ms (execution: 8 s 28 ms, fetching: 28 ms)
+CALL asm3_source_dbo.load_fact_netflix_shows(1); -- in 20 s 547 ms (execution: 20 s 527 ms, fetching: 20 ms)
+
+-> Total: 83s 206ms

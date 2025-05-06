@@ -1,0 +1,12 @@
+AWS RDS MySQL server
+endpoint
+database-1.clhfzbeh6hge.ap-southeast-1.rds.amazonaws.com
+
+database name
+dep304x_asm2
+
+user
+asm2_admin
+
+password
+Asm2_pwd

@@ -1,0 +1,10 @@
+Redshift cluster
+JDBC URL
+jdbc:redshift://redshift-cltr1.cmx88rs5izfq.us-east-1.redshift.amazonaws.com:5439/dev
+
+user
+awsuser
+
+password
+Redsh1ft
+
